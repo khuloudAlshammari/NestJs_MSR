@@ -10,7 +10,9 @@ export class AppController {
   getHello(): string {
     return this.appService.getHello();
 
+    return 'welcome to Masar SWE';
   }
+
   
 
 }
