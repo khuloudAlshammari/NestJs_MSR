@@ -9,6 +9,7 @@ import { DataSource, DataSourceOptions } from 'typeorm';
 import * as dotenv from 'dotenv';
 import { ConfigModule, ConfigService } from '@nestjs/config/dist';
 import { AuthModule } from './auth/auth.module';
+import { ArticleModule } from './article/article.module';
 
 dotenv.config();
 
@@ -21,7 +22,7 @@ const entitiesPath = __dirname + '/**/*.entity{.ts,.js}';
      // imports: [ConfigModule],
        type: 'mysql',
        host: process.env.DB_HOST,
-       port: 3306,
+       port: +process.env.DB_PORT,
        username: process.env.DB_USERNAME,
        password: process.env.DB_PASSOWORD,
        database:process.env.DB_DATABASE,
@@ -30,7 +31,8 @@ const entitiesPath = __dirname + '/**/*.entity{.ts,.js}';
        synchronize: true,
     }),
     AuthModule,
-   
+    
+    ArticleModule,
   ],//im
   controllers: [AppController],
   providers: [AppService],
